@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-let template = require('../cookie-content.hbs');
+let template = require('../cookie.hbs');
 
 function getCookies() {
     return document.cookie

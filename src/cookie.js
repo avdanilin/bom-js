@@ -32,15 +32,20 @@
  * @example
  * homeworkContainer.appendChild(...);
  */
-let homeworkContainer = document.querySelector('#homework-container');
-let filterNameInput = homeworkContainer.querySelector('#filter-name-input');
-let addNameInput = homeworkContainer.querySelector('#add-name-input');
-let addValueInput = homeworkContainer.querySelector('#add-value-input');
-let addButton = homeworkContainer.querySelector('#add-button');
-let listTable = homeworkContainer.querySelector('#list-table tbody');
 
-filterNameInput.addEventListener('keyup', function() {
-});
+document.addEventListener('DOMContentLoaded', function () {
+    let homeworkContainer = document.querySelector('#homework-container');
+    console.log(homeworkContainer)
+    let filterNameInput = homeworkContainer.querySelector('#filter-name-input');
+    let addNameInput = homeworkContainer.querySelector('#add-name-input');
+    let addValueInput = homeworkContainer.querySelector('#add-value-input');
+    let addButton = homeworkContainer.querySelector('#add-button');
+    let listTable = homeworkContainer.querySelector('#list-table tbody');
+    filterNameInput.addEventListener('keyup', function () {
+    });
 
-addButton.addEventListener('click', () => {
-});
+    addButton.addEventListener('click', () => {
+    });
+
+})
+

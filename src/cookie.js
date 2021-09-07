@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
     function removeCookie(e) {
         if (e.target.classList.contains('cookie_remove')) {
             const targetParent = e.target.parentElement.parentElement;

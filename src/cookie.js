@@ -16,8 +16,8 @@
  * На странице должно быть текстовое поле для фильтрации cookie
  * В таблице должны быть только те cookie, в имени или значении которых есть введенное значение
  * Если в поле фильтра пусто, то должны выводиться все доступные cookie
- * Если да бавляемая cookie не соответсвуте фильтру, то она должна быть добавлена только в браузер, но не в таблицу
- * Если добавляется cookie, с именем уже существующией cookie и ее новое значение не соответствует фильтру,
+ * Если добавляемая cookie не соответствует фильтру, то она должна быть добавлена только в браузер, но не в таблицу
+ * Если добавляется cookie, с именем уже существующей cookie и ее новое значение не соответствует фильтру,
  * то ее значение должно быть обновлено в браузере, а из таблицы cookie должна быть удалена
  *
  * Для более подробной информации можно изучить код тестов
@@ -43,12 +43,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const removeButtonCookie = document.querySelector('.cookie_remove');
 
-    filterNameInput.addEventListener('keyup', function () {
-    });
+    filterNameInput.addEventListener('keyup', searchCookie);
 
     document.addEventListener('click', removeCookie);
     addButton.addEventListener('click', addCookie);
-
 
     function addCookie() {
         const getCookieName = addNameInput.value;
@@ -65,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const exist = existCookie();
 
         if (!exist) {
-            tr.insertAdjacentHTML("afterbegin", `<td class="name">${getCookieName}</td><td>${getCookieValue}</td><td>${removeButton.outerHTML}</td>`);
+            tr.insertAdjacentHTML("afterbegin", `<td class="name">${getCookieName}</td><td class="value">${getCookieValue}</td><td>${removeButton.outerHTML}</td>`);
 
             listTable.append(tr);
         }
@@ -100,6 +98,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         return flag;
+    }
+
+    function searchCookie() {
+        const tableElements = listTable.querySelectorAll('td');
+
+        tableElements.forEach(tableElement => {
+            if (tableElement.classList.contains('name') || tableElement.classList.contains('value')) {
+                if(tableElement.textContent.indexOf(this.value) > -1) {
+                    tableElement.parentElement.style.display = 'table-row';
+                } else {
+                    tableElement.parentElement.style.display = 'none';
+                }
+            }
+        });
     }
 })
 
